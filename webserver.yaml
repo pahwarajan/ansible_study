@@ -10,7 +10,10 @@
            - name: copy the data in index.html file
              copy:
                      dest: /var/www/html/index.html
-                     content: "this is my 1st web"
+                     content: "this is my 3st web"
+
+             tags:
+                    - contentcopy
 
            - name: service restart
              service:
