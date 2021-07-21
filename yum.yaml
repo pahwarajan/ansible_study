@@ -8,7 +8,7 @@
                              - httpd
                              - wget
 
-                     state: present
+                     state: absent
 
 
  - name: makes files
@@ -17,15 +17,13 @@
            - name: makes file
              file:
                      path: /foo.conf
-                     state: touch
-                     owner: root
-                     group: root
-                     mode: '0644'
+                     state: absent
+                  
 
  - name: copy file
    hosts: all
    tasks:
            - name: copy file
-             copy:
-                     src: /etc/passwd
-                     dest: /faa.conf
+             file:
+                   path: /faa.conf
+                   state: absent
