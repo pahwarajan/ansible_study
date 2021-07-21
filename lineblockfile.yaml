@@ -1,0 +1,30 @@
+---
+ - name: line and block in file example
+   hosts: all
+   tasks:
+           - file:
+                   path: /blockinfile
+                   state: touch
+
+           - file:
+                   path: /blockinfilepipe
+                   state: touch
+
+
+           - blockinfile:
+                   path: /blockinfile
+                   block:
+                          a
+                          b
+                          c
+
+
+           - blockinfile:
+                   path: /blockinfilepipe
+                   block: |
+                           a
+                           b
+                           c
+                           d
+
+
