@@ -1,0 +1,7 @@
+---
+ - name: print the value
+   hosts: [A1]
+   tasks:
+           - name: print
+             debug:
+                     msg: ip is {{ansible_all_ipv4_addresses[0]}} and day is {{ansible_date_time.day}} and memory free {{ansible_memory_mb.real.free}}
