@@ -1,0 +1,53 @@
+---
+- name: dns server install
+  hosts: 192.168.1.11
+  vars:
+          zone_file: /dnsfile/for.j2
+  tasks:
+          - name: install package
+            package:
+                    name: "{{ item }}"
+                    state: installed
+            with_items:
+                    - bind*
+                    - bind-utils
+              
+          - name: copy file named.conf
+            template:
+                    src: /dnsfile/named.j2
+                    dest: /etc/named.conf
+                    force: yes
+                    owner: named
+                    group: named
+                    setype: named_conf_t
+
+          - name: copy file zone file
+            template:
+                    src: "{{ zone_file }}"
+                    dest: /var/named/for
+                    force: yes
+                    owner: named
+                    group: named
+                    setype: named_zone_t
+            delegate_to: 192.168.1.11
+
+
+          - name: start service
+            service:
+                    name: named
+                    state: started
+                    enabled: yes
+            register: service_output     
+          
+          - debug: var=service_output  
+
+
+
+          - name: firewall service open the named 
+            firewalld:
+                    port: "{{  item }}"
+                    permanent: yes
+                    state: enabled
+            with_items:
+                    - 53/udp
+                    - 53/tcp
