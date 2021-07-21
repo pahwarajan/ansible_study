@@ -1,0 +1,10 @@
+---
+- hosts: all
+  gather_facts: true
+  tasks:
+          - name: service start
+            service:
+                    name: httpd
+                    state: restarted
+
+            when: ansible_distribution == "RedHat" and ansible_memtotal_mb == 700 
