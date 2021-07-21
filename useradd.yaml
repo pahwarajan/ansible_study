@@ -1,0 +1,17 @@
+---
+- hosts: A1
+  tasks:
+          - name: add group
+            group:
+                    name: shyam
+
+          - name: add a user
+            user:
+                    name: "{{item.name}}"
+                    group: "{{item.group}}"
+
+            loop:
+                    - name: raj
+                      group: wheel
+                    - name: raja
+                      group: shyam
