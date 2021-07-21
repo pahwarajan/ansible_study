@@ -1,0 +1,14 @@
+---
+- name: Configuring the EC2 Instance
+  hosts: localhost
+  connection: local
+  tasks:
+          - name: launch instance
+            ec2:
+                    state: 'absent'
+                    region: us-east-1
+                    instance_ids: i-048ac14b66b9bdd86
+                    aws_access_key: AKIAVMMTUEFVT7JFK7AO
+                    aws_secret_key: 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
+
+ 
