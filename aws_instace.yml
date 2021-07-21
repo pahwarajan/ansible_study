@@ -1,0 +1,19 @@
+---
+- name: Configuring the EC2 Instance
+  hosts: localhost
+  connection: local
+  tasks:
+          - name: launch instance
+            ec2:
+                    instance_type: t2.micro
+                    image: ami-096fda3c22c1c990a
+                    region: us-east-2
+                    keypair: linux
+                    count: 1
+                    aws_access_key: AKIAVMMTUEFVTENBXMXG
+                    aws_secret_key: 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
+                    wait: yes
+                    group_id: sg-0f30c478e2fd5b38d
+                    vpc_subnet_id: subnet-f4dff4b9
+                    assign_public_ip: yes
+ 
