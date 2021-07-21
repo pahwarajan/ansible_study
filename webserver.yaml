@@ -1,0 +1,29 @@
+---
+ - name: confighure and install webserver
+   hosts: all
+   tasks:
+           - name: install package
+             package:
+                     name: httpd
+                     state: present
+
+           - name: copy the data in index.html file
+             copy:
+                     dest: /var/www/html/index.html
+                     content: "this is my 1st web"
+
+           - name: service restart
+             service:
+                     name: httpd
+                     state: restarted
+                     enabled: yes
+
+
+ - name: check the webserver working or not
+   hosts: all
+   tasks:
+           - name: connect to webserver
+             uri:
+                     url: "ip of the server of its hostname"
+                     return_code: yes
+                     status_code: 200
