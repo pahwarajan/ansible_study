@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks:
+          - name: copy data
+            copy:
+                    src: "{{item}}"
+                    dest: /root
+            loop:
+                    - /a.txt
+                    - /b.txt
+                    - /c.txt
