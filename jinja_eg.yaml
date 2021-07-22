@@ -1,0 +1,9 @@
+---
+- hosts: all
+  gather_facts: true
+  tasks:
+          - name: copy a file
+            template:
+                    src: motd.j2
+                    dest: /etc/motd
+
