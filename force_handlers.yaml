@@ -1,0 +1,19 @@
+---
+- hosts: all
+  force_handlers: yes
+  tasks:
+          - name: create a file
+            file:
+                    name: /grras1
+                    state: directory
+            notify: udaipur
+          - name: run a command
+            command: yum install gras
+            notify: grras
+  handlers:
+          - name: grras
+            debug:
+                    msg: "content has been printed"
+          - name: udaipur
+            debug:
+                    msg: "its is printing"
