@@ -4,6 +4,6 @@
   tasks:
           - name: copy a file
             template:
-                    src: motd.j2
-                    dest: /etc/motd
+                    src: for_stmnt.txt.j2
+                    dest: /for.txt
 
