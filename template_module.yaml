@@ -1,0 +1,12 @@
+---
+- hosts: all
+  gather_facts: true
+  vars:
+          - name: rajan
+          - age: "27"
+  tasks:
+          - name: copy a file
+            template:
+                    src: iinfo.txt
+                    dest: /iinfo.txt
+

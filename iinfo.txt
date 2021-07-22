@@ -1,0 +1,3 @@
+my ip is {{ansible_default_ipv4.address}} and my hostname is {{ansible_hostname}}
+
+my name is {{name}} and my age is {{age}}
