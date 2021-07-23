@@ -1,0 +1,15 @@
+---
+- name: install package
+  yum:
+          name: "{{package_name}}"
+          state: present
+- name: copy file to managed server
+  copy:
+          src: index.html
+          dest: "{{documentroot}}"
+  notify: reloadtheserver        
+- name: copy config file
+  template:
+          src: httpd.conf.j2
+          dest: /etc/httpd/conf/1.conf
+  notify: restarttheserver

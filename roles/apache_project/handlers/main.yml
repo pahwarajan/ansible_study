@@ -1,0 +1,9 @@
+---
+- name: reloadtheserver
+  service:
+          name: httpd
+          state: reloaded
+- name: restarttheserver
+  service:
+          name: httpd
+          state: restarted
