@@ -1,0 +1,24 @@
+---
+- hosts: all
+  tasks:
+          - name: cretae a primary partintion
+            parted:
+                    device: /dev/xvdf
+                    number: 1
+                    state: present
+                    part_end: 1GiB
+          - name: format it
+            filesystem:
+                    fstype: xfs
+                    dev: /dev/xvdf1
+          - name: creati a directory
+            file:
+                    path: /mnt/part1
+                    state: directory
+          - name: mount the partition
+            mount:
+                    path: /mnt/dvd
+                    src: /dev/xvdf1
+                    fstype: xfs
+                    state: mounted
+
